@@ -1,0 +1,14 @@
+<div  [routerLink]="[ '/events', eventData.id ]" class="well hoverwell eventdetails__bg--grey eventdetails__thumbnail">  
+  <div class="eventdetails__text--white">
+    <h3>{{eventData.name}}</h3>
+    <div>Date: {{eventData.date}}</div> 
+    <div>Time: {{eventData.time}}</div>
+    <div>Price: ${{eventData.price}}</div>
+    <div *ngIf="eventData?.location">
+      <span>{{eventData.location?.address}}</span> &nbsp; 
+      <span>{{eventData.location?.city}}
+          , {{eventData.location?.country}}
+      </span>
+    </div>
+  </div>
+</div>

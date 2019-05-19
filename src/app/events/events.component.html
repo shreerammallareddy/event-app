@@ -1,6 +1,5 @@
 <div class="row event__bg--color">
-  <div class="col-md-6" *ngFor="let item of [0,1,2,3,4]">
-    {{item}}  
-    <app-event-details></app-event-details>
+  <div class="col-md-6 eventthumbnail__container--layout" *ngFor="let d of eventsData">
+    <app-event-thumbnail [eventData]="d" ></app-event-thumbnail>
   </div>
 </div>
