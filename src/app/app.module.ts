@@ -9,6 +9,10 @@ import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnai
 import { EventsService } from './events/shared/events-service.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
+import { ErrorComponent } from './error/error.component';
+import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
+import { EventsResolverService } from './events/events-resolver.service';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +21,30 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
     EventDetailsComponent,
     EventsComponent,
     EventThumbnailComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    ErrorComponent,
+    ProfileComponent
        
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [EventsService],
+  providers: [EventsService,
+     EventRouteActivatorService,
+     EventsResolverService,
+     {provide:'canDeactivateRouter', useValue:checkDirtyState}     
+    ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
+// route deactivator discouage user from navigating away from the current page. 
+// we use this if we want to warn the user before saving the state of application before 
+// navigating to different page
+export function checkDirtyState(createEvent:CreateEventComponent){
+  if(createEvent.isDirty){
+    return window.confirm("You have not saved the form, do you really want to Cancel?")
+  }
+  return true;
+}

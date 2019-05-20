@@ -6,18 +6,18 @@
 
   <div class="collapse navbar-collapse" id="navbarToggler">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="[ '/events']">All Events<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[ '/events']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>All Events<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="[ '/events/new']">Create Event</a>
+        <a class="nav-link" [routerLink]="[ '/events/new']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Create Event</a>
       </li>      
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline  my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
         <a class="nav-link" href="#">Welcome Shreeram</a>
       </li>      

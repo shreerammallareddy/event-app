@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from './shared/events-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -9,10 +10,16 @@ import { EventsService } from './shared/events-service.service';
 export class EventsComponent implements OnInit {
   eventsData:any;
   
-  constructor(private eventsService:EventsService) {}
+  constructor(private eventsService:EventsService, private route:ActivatedRoute) {}
 
   ngOnInit() {
-    this.eventsData = this.eventsService.getEvents();
+    // Here we subscribing the event for which we have screate the subscription in events service class
+    this.eventsService.getEvents().subscribe(events => {this.eventsData = events});
+    // Since we have handled the data resolution in event-resolver service no need for above line
+    
+    // Resolv has issue so will fix it later
+    // this.eventsData = this.route.snapshot.data['eventsResolverDataFromRoute'];
+    
   }
 
 }

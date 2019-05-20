@@ -1,4 +1,30 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EventsService {
+  
+  constructor() { }
+
+  getEvents(){
+    let subject = new Subject();
+    setTimeout(()=>{subject.next(EVENTS);
+                    subject.complete;},100)
+    return subject;
+  }
+
+  // The below method returns an event Object.
+  getEvent(id:number):any{
+    return EVENTS.find(event => event.id === id);
+  }
+  
+}
+
+
+
 
 const EVENTS = [
   {
@@ -311,20 +337,3 @@ const EVENTS = [
   }
 ]
 
-
-@Injectable({
-  providedIn: 'root'
-})
-export class EventsService {
-  
-  constructor() { }
-
-  getEvents(){
-    return EVENTS;
-  }
-
-  getEvent(id:number){
-    return EVENTS.find(event => event.id === id);
-  }
-  
-}
