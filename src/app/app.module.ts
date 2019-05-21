@@ -12,7 +12,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { ErrorComponent } from './error/error.component';
 import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 import { EventsResolverService } from './events/events-resolver.service';
-import { ProfileComponent } from './user/profile/profile.component';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,9 +22,7 @@ import { ProfileComponent } from './user/profile/profile.component';
     EventsComponent,
     EventThumbnailComponent,
     CreateEventComponent,
-    ErrorComponent,
-    ProfileComponent
-       
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +31,8 @@ import { ProfileComponent } from './user/profile/profile.component';
   providers: [EventsService,
      EventRouteActivatorService,
      EventsResolverService,
-     {provide:'canDeactivateRouter', useValue:checkDirtyState}     
+     {provide:'canDeactivateRouter', useValue:checkDirtyState},
+     AuthService     
     ],
   bootstrap: [AppComponent]
 })

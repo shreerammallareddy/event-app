@@ -18,7 +18,9 @@ const routes: Routes = [
   {path:'events' , component : EventsComponent},
   {path:'events/:id', component : EventDetailsComponent, canActivate:[EventRouteActivatorService] },
   {path:'pagenotfound',component:ErrorComponent},
-  {path:'' , redirectTo:'/events' , pathMatch:'full'}
+  {path:'' , redirectTo:'/events' , pathMatch:'full'},
+  {path:'user', loadChildren:'./user/user.module#UserModule'}
+
 ];
 
 @NgModule({

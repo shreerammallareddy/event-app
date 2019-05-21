@@ -19,7 +19,8 @@
     </form>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">Welcome Shreeram</a>
+          <a *ngIf="!authService.isAuthenticated()" class="nav-link" [routerLink] = "['user/login']">Login</a>
+        <a *ngIf="authService.isAuthenticated()" class="nav-link" [routerLink] = "['user/profile']">Welcome {{authService.currentUser.firstName}}</a>
       </li>      
     </ul>
   </div>
