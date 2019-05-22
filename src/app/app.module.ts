@@ -13,6 +13,7 @@ import { ErrorComponent } from './error/error.component';
 import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 import { EventsResolverService } from './events/events-resolver.service';
 import { AuthService } from './user/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { AuthService } from './user/auth.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [EventsService,
      EventRouteActivatorService,

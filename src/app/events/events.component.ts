@@ -18,7 +18,7 @@ export class EventsComponent implements OnInit {
     this.eventsService.getEvents().subscribe(events => {this.eventsData = events});
     // Since we have handled the data resolution in event-resolver service no need for above line
     
-    // Resolv has issue so will fix it later
+    // Resolve has issue so will fix it later
     // this.eventsData = this.route.snapshot.data['eventsResolverDataFromRoute'];
     
   }

@@ -8,11 +8,16 @@ import { Router } from '@angular/router';
 })
 export class CreateEventComponent implements OnInit {
 
+  newEvent
   isDirty:boolean = true;
 
   constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+
+  saveEvent(formValues){
+    console.log(formValues)
   }
 
   cancel(){
