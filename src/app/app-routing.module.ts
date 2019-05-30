@@ -6,6 +6,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { ErrorComponent } from './error/error.component';
 import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 import { EventsResolverService } from './events/events-resolver.service';
+import { CreateSessionComponent } from './events/create-session/create-session.component';
 
 /**
  * Will use below resolver later
@@ -15,6 +16,7 @@ import { EventsResolverService } from './events/events-resolver.service';
 const routes: Routes = [
   
   {path:'events/new', component:CreateEventComponent , canDeactivate:['canDeactivateRouter']},
+  {path:'events/sessions/new', component:CreateSessionComponent},
   {path:'events' , component : EventsComponent},
   {path:'events/:id', component : EventDetailsComponent, canActivate:[EventRouteActivatorService] },
   {path:'pagenotfound',component:ErrorComponent},
