@@ -1,0 +1,4 @@
+<div class="well pointable" (click)="toggleContent()">
+  <h4 class="well-title">{{title}}</h4>
+  <ng-content #name *ngIf="!collapsible"></ng-content>
+</div>

@@ -32,4 +32,8 @@ export class EventDetailsComponent implements OnInit {
     this.addMode = false;
   }
 
+  onCancel(event){
+    this.addMode = false;
+  }
+
 }

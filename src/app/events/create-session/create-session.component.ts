@@ -9,7 +9,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CreateSessionComponent implements OnInit {
 
-  @Output() saveNewSession = new EventEmitter
+  @Output() saveNewSession = new EventEmitter();
+  @Output() cancelSession = new EventEmitter();
   formGroup: FormGroup;
   sessionName:FormControl;
   presenter:FormControl;
@@ -51,6 +52,11 @@ export class CreateSessionComponent implements OnInit {
     }
     console.log(session);
     this.saveNewSession.emit(session);
+  }
+
+
+  cancel(){
+    this.cancelSession.emit();
   }
 
 }
