@@ -1,5 +1,5 @@
-<div class="well pointable" (click)="toggleContent()">
-  <h4>
+<div class="card card-body bg-light"  (click)="toggleContent()">
+  <h4 class="cursor-pointer">
     <ng-content select="[well-title]"></ng-content>
   </h4>
   <ng-content select="[well-body]" *ngIf="!collapsible"></ng-content>
