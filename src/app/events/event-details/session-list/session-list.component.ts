@@ -10,6 +10,7 @@ export class SessionListComponent implements OnInit, OnChanges {
 
   @Input() sessions:ISession[]
   @Input() filterBy:string;
+  @Input() sortBy:string;
 
   visibleSessions:ISession[] = [];
 
@@ -25,6 +26,9 @@ export class SessionListComponent implements OnInit, OnChanges {
   ngOnChanges(){
     if(this.sessions){
       this.filterSessions(this.filterBy);
+      // we Sort the Objects by passing the comparator where we implement our own sorting logic on objects
+      // We can imporve below logic by creatign a generic function to sort any passed field
+      this.sortBy === 'name'? this.visibleSessions.sort(sortByNameAsc):this.visibleSessions.sort(sortByVotes)
     }
   }
 
@@ -40,4 +44,21 @@ export class SessionListComponent implements OnInit, OnChanges {
     }
   }
 
+}
+
+/**
+ * This method compares the Session Object name property
+ * @param s1 : First Object to be compared
+ * @param s2 : Second Object compared against
+ */
+function sortByNameAsc(s1:ISession, s2:ISession){
+  if(s1.name > s2.name) return 1
+  else if(s1.name === s2.name) return 0
+  else return -1
+}
+
+function sortByVotes(s1:ISession, s2:ISession){
+  let votes1 = s1.voters?s1.voters.length:0;
+  let votes2 = s2.voters?s2.voters.length:0;
+  return votes2-votes1;
 }
