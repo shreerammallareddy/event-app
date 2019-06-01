@@ -12,7 +12,9 @@ import { ISession } from '../models/session.model';
 export class EventDetailsComponent implements OnInit {
 
  event:IEvent;
- addMode:boolean; 
+ addMode:boolean;
+ filterBy:string = 'all';
+ 
   constructor(private eventsService:EventsService, private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -34,6 +36,10 @@ export class EventDetailsComponent implements OnInit {
 
   onCancel(event){
     this.addMode = false;
+  }
+
+  filterByVal(value:string){
+    this.filterBy = value;
   }
 
 }

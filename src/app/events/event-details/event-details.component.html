@@ -1,4 +1,4 @@
-<div class = "eventdetails__container">
+<div class="eventdetails__container">
   <img class="event-image" [src]="event?.imageUrl" [alt]="event?.name">
 
   <div class="row">
@@ -22,18 +22,28 @@
     </div>
   </div>
   <hr>
-  
+
   <div class="row">
-    <div class="col-md-2">
-    <h3 style="margin:0">Sessions</h3>
+    <div class="col-md-4">
+      <h3 style="margin:0">Sessions</h3>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <button type="button" class="btn btn-secondary" [class.active] = "filterBy=='all'" (click)="filterByVal('all')">All</button>
+        <button type="button" class="btn btn-secondary" [class.active] = "filterBy=='beginner'" (click)="filterByVal('beginner')">Beginner</button>
+        <button type="button" class="btn btn-secondary" [class.active] = "filterBy=='intermediate'" (click)="filterByVal('intermediate')">Intermediate</button>
+        <button type="button" class="btn btn-secondary" [class.active] = "filterBy=='advanced'" (click)="filterByVal('advanced')">Advanced</button>
+      </div>
+    </div>
+    <div class="col-md-4">
       <a (click)="addSession()">Add Sessions</a>
     </div>
   </div>
   <hr>
-  <session-list *ngIf="!addMode" [sessions] = "event?.sessions"></session-list>
-  <create-session *ngIf="addMode" (saveNewSession) = "saveNewSessionInEvent($event)" (cancelSession) = onCancel($event)></create-session>
+
+  <session-list *ngIf="!addMode" [sessions]="event?.sessions" [filterBy]="filterBy"></session-list>
+  <create-session *ngIf="addMode" (saveNewSession)="saveNewSessionInEvent($event)" (cancelSession)=onCancel($event)>
+  </create-session>
 
 
 </div>
